@@ -8,12 +8,10 @@ import static org.junit.Assert.assertTrue;
 
 public class RegExGeneratorTest {
 
-    private static final int MAX_LENGTH = 128;
-
     private boolean validate(String regEx, int numberOfResults) {
-        RegExGenerator generator = new RegExGenerator(MAX_LENGTH);
-
-        List<String> results = generator.generate(regEx, numberOfResults);
+        RegExGenerator generator = new RegExGenerator();
+        // TODO: Uncomment parameters
+        List<String> results = generator.generate(/*regEx, numberOfResults*/);
         // force matching the beginning and the end of the strings
         Pattern pattern = Pattern.compile("^" + regEx + "$");
         return results
@@ -27,7 +25,11 @@ public class RegExGeneratorTest {
     }
 
     //TODO: Uncomment these tests
+<<<<<<< HEAD
 /*
+=======
+    /*
+>>>>>>> parent of 0434b42... Uncommenting
     @Test
     public void testAnyCharacter() {
         assertTrue(validate(".", 1));
