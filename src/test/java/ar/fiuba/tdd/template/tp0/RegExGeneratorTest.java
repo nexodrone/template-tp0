@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.template.tp0;
 
+import org.junit.Test;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,11 +27,7 @@ public class RegExGeneratorTest {
     }
 
     //TODO: Uncomment these tests
-<<<<<<< HEAD
-/*
-=======
     /*
->>>>>>> parent of 0434b42... Uncommenting
     @Test
     public void testAnyCharacter() {
         assertTrue(validate(".", 1));
