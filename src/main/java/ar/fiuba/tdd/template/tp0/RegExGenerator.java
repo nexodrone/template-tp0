@@ -15,7 +15,7 @@ public class RegExGenerator {
     public List<String> generate(/*String regEx, int numberOfResults*/) {
         return new ArrayList<String>() {
             {
-                /* Test commit */
+                /* Test commit Travis */
                 add("a");
                 add("b");
                 add("c");
