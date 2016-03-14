@@ -1,7 +1,5 @@
 package ar.fiuba.tdd.template.tp0;
 
-import org.junit.Test;
-
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +25,8 @@ public class RegExGeneratorTest {
                     },
                     (item1, item2) -> item1 && item2);
     }
+
+    //TODO: Uncomment these tests
 /*
     @Test
     public void testAnyCharacter() {
@@ -62,6 +62,6 @@ public class RegExGeneratorTest {
     public void testCharacterSetWithQuantifiers() {
         assertTrue(validate("[abc]+", 1));
     }
-*/
+    */
     // TODO: Add more tests!!!
 }
