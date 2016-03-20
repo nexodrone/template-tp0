@@ -18,7 +18,7 @@ public class RegExGenerator {
 
     public RegExGenerator(int maxLength) {
         if (maxLength <= 0) {
-            throw new RuntimeException("Constructor argument should be >= 1");
+            throw new InvalidConstructorArgumentException();
         }
         this.maxLength = maxLength;
     }
@@ -142,7 +142,7 @@ public class RegExGenerator {
             if (detectValidSyntax()) {
                 continue;
             }
-            throw new RuntimeException("TP0 syntax error");
+            throw new InvalidSyntaxException();
         }
     }
 

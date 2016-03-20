@@ -142,32 +142,32 @@ public class RegExGeneratorTest {
         assertTrue(validate("\\\\[&\\#\\%]*.?.?[\\[\\]]", TEST_MANY));
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InvalidSyntaxException.class)
     public void testExceptionSyntaxBugInBrackets1() {
         validate("[hoa[asd]", TEST_FEW);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InvalidSyntaxException.class)
     public void testExceptionSyntaxBugInBrackets2() {
         validate("[\\?*]", TEST_FEW);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InvalidSyntaxException.class)
     public void testExceptionSyntaxBugInBrackets3() {
         validate("hol[]a", TEST_FEW);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InvalidSyntaxException.class)
     public void testExceptionSyntaxBug1() {
         validate("..[hay]un]bug", TEST_FEW);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InvalidSyntaxException.class)
     public void testExceptionSyntaxBug2() {
         validate("*", TEST_FEW);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InvalidSyntaxException.class)
     public void testExceptionSyntaxBug3() {
         validate("1+??=3", TEST_FEW);
     }
