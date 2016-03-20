@@ -9,9 +9,17 @@ public class RegExGenerator {
     private String regEx;
     private Random random = new Random();
 
+    private Quantifier quantifierQuestion = () -> random.nextInt(2);
+    private Quantifier quantifierStar = () -> random.nextInt(maxLength + 1);
+    private Quantifier quantifierPlus = () -> random.nextInt(maxLength) + 1;
+    private Quantifier quantifierNone = () -> 1;
+
     private ArrayList<Token> tokens = new ArrayList<>();
 
     public RegExGenerator(int maxLength) {
+        if (maxLength <= 0) {
+            throw new RuntimeException("Constructor argument should be >= 1");
+        }
         this.maxLength = maxLength;
     }
 
@@ -28,23 +36,21 @@ public class RegExGenerator {
 
     private void checkQuantifierForToken(Token token) {
         if (regEx.matches("^[?*+].*$")) {    // check possible quantifier
-            Quantifier quantifier;
             switch (regEx.charAt(0)) {
                 case '?':
-                    quantifier = () -> random.nextInt(2);
+                    token.setQuantifier(quantifierQuestion);
                     break;
                 case '*':
-                    quantifier = () -> random.nextInt(maxLength + 1);
+                    token.setQuantifier(quantifierStar);
                     break;
                 case '+':
-                    quantifier = () -> random.nextInt(maxLength) + 1;
+                    token.setQuantifier(quantifierPlus);
                     break;
                 default:
-                    quantifier = () -> 1;
+                    token.setQuantifier(quantifierNone);
                     break;
             }
 
-            token.setQuantifier(quantifier);
             regEx = regEx.substring(1); // remove quantifier
         }
     }
