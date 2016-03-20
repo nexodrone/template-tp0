@@ -2,10 +2,12 @@ package ar.fiuba.tdd.template.tp0;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RegExGenerator {
     private int maxLength;
     private String regEx;
+    private Random random = new Random();
 
     private ArrayList<Token> tokens = new ArrayList<>();
 
@@ -19,30 +21,31 @@ public class RegExGenerator {
         tokenize();
         for (int i = 0; i < numberOfResults; i++) {
             list.add(makeOneResult());
-            System.out.println(list.get(i));                                                    /* print for test */
+            //System.out.println(list.get(i));                                                    /* print for test */
         }
         return list;
     }
 
     private void checkQuantifierForToken(Token token) {
         if (regEx.matches("^[?*+].*$")) {    // check possible quantifier
-
+            Quantifier quantifier;
             switch (regEx.charAt(0)) {
                 case '?':
-                    token.setQuantifier(new Question());
+                    quantifier = () -> random.nextInt(2);
                     break;
                 case '*':
-                    token.setQuantifier(new Star(maxLength));
+                    quantifier = () -> random.nextInt(maxLength + 1);
                     break;
                 case '+':
-                    token.setQuantifier(new Plus(maxLength));
+                    quantifier = () -> random.nextInt(maxLength) + 1;
                     break;
                 default:
+                    quantifier = () -> 1;
                     break;
             }
 
+            token.setQuantifier(quantifier);
             regEx = regEx.substring(1); // remove quantifier
-
         }
     }
 
