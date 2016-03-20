@@ -11,10 +11,8 @@ public class Point extends Token {
 
     public String generate() {
         StringBuilder result = new StringBuilder("");
-        int cant = 1;
-        if (quantifier != null) {
-            cant = quantifier.getNumber();
-        }
+        int cant = quantifier.getNumber();
+
         for (int i = 0; i < cant; i++) {
             int number = random.nextInt(256);
             while (number <= 31 || (127 <= number && number <= 160)) {  // avoiding control characters

@@ -14,10 +14,7 @@ public class Bracket extends Token {
 
     public String generate() {
         StringBuilder result = new StringBuilder("");
-        int cant = 1;
-        if (quantifier != null) {
-            cant = quantifier.getNumber();
-        }
+        int cant = quantifier.getNumber();
 
         int randomNum;
         for (int i = 0; i < cant; i++) {

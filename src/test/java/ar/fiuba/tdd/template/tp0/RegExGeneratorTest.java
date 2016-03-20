@@ -119,7 +119,7 @@ public class RegExGeneratorTest {
 
     @Test
     public void testTP0Example() {
-        assertTrue(validate("..+[ab]*d?c", TEST_SOME));
+        assertTrue(validate("..+[ab]*d?c", TEST_MANY));
     }
 
     @Test

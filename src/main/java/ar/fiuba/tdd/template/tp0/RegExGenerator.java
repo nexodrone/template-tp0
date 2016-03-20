@@ -35,23 +35,26 @@ public class RegExGenerator {
     }
 
     private void checkQuantifierForToken(Token token) {
-        if (regEx.matches("^[?*+].*$")) {    // check possible quantifier
+        if (!regEx.isEmpty()) {
             switch (regEx.charAt(0)) {
                 case '?':
                     token.setQuantifier(quantifierQuestion);
+                    regEx = regEx.substring(1); // remove quantifier
                     break;
                 case '*':
                     token.setQuantifier(quantifierStar);
+                    regEx = regEx.substring(1); // remove quantifier
                     break;
                 case '+':
                     token.setQuantifier(quantifierPlus);
+                    regEx = regEx.substring(1); // remove quantifier
                     break;
                 default:
                     token.setQuantifier(quantifierNone);
                     break;
             }
-
-            regEx = regEx.substring(1); // remove quantifier
+        } else {
+            token.setQuantifier(quantifierNone);
         }
     }
 
